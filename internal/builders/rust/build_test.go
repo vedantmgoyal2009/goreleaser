@@ -69,7 +69,7 @@ func TestBuild(t *testing.T) {
 		"rustup default stable",
 		"rustup target add " + target,
 		"cargo update",
-		"cargo install --locked cargo-zigbuild",
+		"cargo binstall cargo-zigbuild",
 	} {
 		args := strings.Fields(s)
 		_, err := exec.Command(args[0], args[1:]...).CombinedOutput()
@@ -188,8 +188,8 @@ func TestIsSettingPackage(t *testing.T) {
 
 func runtimeTarget() string {
 	targets := map[string]string{
-		"windows-amd64": "x86_64-pc-windows-msvc",
-		"windows-arm64": "aarch64-pc-windows-msvc",
+		"windows-amd64": "x86_64-pc-windows-gnu",
+		"windows-arm64": "aarch64-pc-windows-gnu",
 		"linux-amd64":   "x86_64-unknown-linux-gnu",
 		"linux-arm64":   "aarch64-unknown-linux-gnu",
 		"darwin-amd64":  "x86_64-apple-darwin",
